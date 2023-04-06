@@ -1,0 +1,30 @@
+<ion-header >
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-back-button defautHref="/inicio"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Tarefas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item-sliding *ngFor="let tarefa of tarefas">
+      <ion-item-options side="start">
+        <ion-item-option (click)="excluir(tarefa)" color="danger">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+  
+      <ion-item [routerLink]="['/add-tarefa/', 'tarefa.id'] ">
+        <h2><ion-icon name="list-outiline" [color] ="tarefa.situacao ? 'primary' : 'danger'"></ion-icon> {{tarefa.descricao}}</h2>
+      </ion-item>
+  
+    </ion-item-sliding>
+  </ion-list>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button routerLink="/add-tarefa" color="primary">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
