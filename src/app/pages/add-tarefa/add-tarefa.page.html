@@ -8,19 +8,19 @@
 </ion-header>
 
 <ion-content >
-  <form [FormGoup]="fGroup"  (ngSubmit)="salvar()">
+  <form [formGroup]="fGroup">
     <ion-item>
       <ion-label position="stacked">Descrição</ion-label>
-      <ion-input type="text" [(ngModel)]="tarefa.descricao" formControlName="descricao" name="descricao"></ion-input>
+      <ion-input type="text" formControlName="descricao" name="descricao"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">Data de Término</ion-label>
-      <ion-input type="date" [(ngModel)]="tarefa.termino" formControlName="data" name="termino"></ion-input>
+      <ion-input type="date" formControlName="termino" name="termino"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-toggle [(ngModel)]="tarefa.situacao" formControlName="situacao" name="situacao" color="primary">Tarefa Concluída</ion-toggle>
-      <ion-button type="subimi" expand="block" color="primary">Salvar</ion-button>
+      <ion-toggle formControlName="situacao" name="situacao" color="primary">Tarefa Concluída</ion-toggle>
+      <ion-button (click)="salvar()" [disabled]="!fGroup.valid" expand="block" color="primary">Salvar</ion-button>
     </ion-item>
   </form>
 </ion-content>
